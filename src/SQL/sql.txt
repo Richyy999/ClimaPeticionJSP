@@ -1,0 +1,2 @@
+tabla Provincias: https://github.com/alombarte/utilities/blob/master/sql/spain_provincias.sql
+tabla municipios: https://github.com/alombarte/utilities/blob/master/sql/spain_municipios_INE.sql

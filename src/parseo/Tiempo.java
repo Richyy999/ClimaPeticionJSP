@@ -25,8 +25,7 @@ public class Tiempo {
 		return provincia;
 	}
 
-	@Override
-	public String toString() {
-		return "<td>" + this.fecha + "</td><td>" + this.tMax + "</td><td>" + this.tMin + "</td>";
+	public String toHTML() {
+		return "<tr><td>" + this.fecha + "</td><td>" + this.tMax + "</td><td>" + this.tMin + "</td></tr>";
 	}
 }

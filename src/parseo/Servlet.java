@@ -32,24 +32,9 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String codMovil = request.getParameter("cod");
-		if (codMovil != null) {
-			String url = codificarId(codMovil);
-			URL web = Parsear.conectar(url);
-			ArrayList<Tiempo> predicciones = Parsear.parseo(web);
-			String html = GenerarHTML.crearHTML(predicciones);
-			request.setAttribute("tabla", html);
-			System.out.println(html);
-			request.getRequestDispatcher("tablaAndroid.jsp").forward(request, response);
-		} else {
 			TreeMap<String, Integer> provincias = AccesoBBDD.getProvincias();
 			request.setAttribute("combo", provincias);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-	}
-
-	private String codificarId(String codMovil) {
-		return "http://www.aemet.es/xml/municipios/localidad_" + codMovil + ".xml";
 	}
 
 	/**
@@ -86,7 +71,6 @@ public class Servlet extends HttpServlet {
 		while (idMunicipio.length() < 3) {
 			idMunicipio = "0" + idMunicipio;
 		}
-		String url = "http://www.aemet.es/xml/municipios/localidad_" + idProvincia + idMunicipio + ".xml";
-		return url;
+		return "http://www.aemet.es/xml/municipios/localidad_" + idProvincia + idMunicipio + ".xml";
 	}
 }
